@@ -4,6 +4,47 @@ Aplikasi Streamlit untuk **Pencarian Jalur Terpendek Evakuasi Bencana Menggunaka
 
 > **Simulasi akademik dengan data fiktif, bukan sistem navigasi evakuasi bencana di dunia nyata.** Kondisi jalan, shelter, dan jarak tidak mewakili wilayah atau informasi bencana aktual.
 
+## Tentang proyek
+
+Project ini merupakan aplikasi simulasi akademik untuk menentukan **jalur evakuasi terpendek** dari lokasi warga menuju salah satu shelter ketika sebagian jalan terkena dampak bencana. Permasalahan dimodelkan sebagai **graf tak berarah berbobot** `G = (V, E, W)`: lokasi dan persimpangan sebagai simpul (`V`), jalan sebagai sisi (`E`), serta jarak jalan dalam meter sebagai bobot (`W`).
+
+Pengguna memilih titik awal, shelter tujuan, dan jalan yang diblokir. Aplikasi kemudian mencari rute dengan total jarak terkecil menggunakan **implementasi Dijkstra manual berbasis `heapq`**. Hasil pencarian ditampilkan sebagai urutan simpul, total jarak, garis rute berwarna hijau pada visualisasi interaktif, tabel iterasi algoritma, serta status validasi terhadap **NetworkX**. Jika seluruh akses menuju shelter terputus, aplikasi melaporkan bahwa tujuan tidak dapat dijangkau.
+
+Studi kasus menggunakan **10 lokasi, 15 jalan dua arah, dan 2 shelter** pada wilayah permukiman fiktif. Tujuannya adalah memperlihatkan bagaimana perubahan kondisi jalan memengaruhi rute evakuasi, sekaligus menjadi media pembelajaran algoritma Dijkstra dan analisis kinerja graf.
+
+### Tujuan
+
+- Menerapkan algoritma Dijkstra secara manual dengan `heapq` untuk pencarian jalur terpendek.
+- Memodelkan jaringan jalan evakuasi menggunakan NetworkX, Plotly, dan Pandas.
+- Menunjukkan pengaruh pemblokiran jalan terhadap rute dan keterjangkauan shelter.
+- Menyediakan visualisasi tahapan algoritma dan validasi hasil antara implementasi manual dan NetworkX.
+- Menjadi proyek demonstrasi akademik yang dapat dijalankan dan diuji secara lokal.
+
+### Fitur utama
+
+| Fitur | Keterangan |
+|---|---|
+| Pemilihan rute | Memilih titik awal warga dan salah satu dari dua shelter tujuan. |
+| Visualisasi graf | Menampilkan simpul, jalan, jarak dalam meter, shelter, dan rute optimum secara interaktif. |
+| Pemblokiran jalan | Menonaktifkan satu atau beberapa jalan terdampak melalui sidebar. |
+| Perhitungan ulang | Rute dan total jarak langsung dihitung ulang setiap pilihan berubah. |
+| Kondisi terputus | Menampilkan pesan yang jelas apabila shelter tujuan tidak dapat dijangkau. |
+| Tabel iterasi | Mencatat simpul yang telah dipastikan, jarak kumulatif, pembaruan tetangga, dan snapshot jarak. |
+| Validasi NetworkX | Membandingkan jarak minimum hasil implementasi manual dengan NetworkX. |
+| Reset simulasi | Mengembalikan titik awal, tujuan, dan seluruh jalan ke kondisi awal. |
+
+### Teknologi
+
+| Teknologi | Fungsi |
+|---|---|
+| Python 3.12 | Bahasa pemrograman utama. |
+| Streamlit | Antarmuka web interaktif. |
+| `heapq` | Implementasi manual algoritma Dijkstra. |
+| NetworkX | Pemodelan graf dan validasi jarak minimum. |
+| Plotly | Visualisasi graf interaktif. |
+| Pandas | Penyajian data node, edge, dan tabel iterasi. |
+| `unittest` + Streamlit AppTest | Pengujian algoritma dan antarmuka tanpa framework tes tambahan. |
+
 ## Instalasi dan menjalankan
 
 Gunakan **Python 3.12**. Jalankan dari folder proyek.
