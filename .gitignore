@@ -1,0 +1,25 @@
+# Virtual environment lokal
+.venv/
+venv/
+
+# Cache Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Konfigurasi rahasia Streamlit
+.streamlit/secrets.toml
+
+# Berkas sementara
+*.tmp
+*.log
+test-output.txt
+server-output.txt
+server-error.txt
+dependency-check.txt
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
